@@ -20,7 +20,7 @@ h1 {
     width: 100%;
     background-color: grey;
     height: 50px;
-    font-size: 30px;
+    font-size: 36px;
     text-align: right;
     justify-content: flex-end;
     border-color: black;
@@ -32,8 +32,9 @@ h1 {
 button.calcbutton {
     justify-content: center;
     flex: 1 25%;
-    font-size: 20px;
+    font-size: 33px;
+    color: white;
+    background-color: orange;
 }
-
 
 
