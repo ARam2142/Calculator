@@ -37,4 +37,12 @@ button.calcbutton {
     background-color: orange;
 }
 
+button.number {
+    justify-content: center;
+    flex: 1 25%;
+    font-size: 33px;
+    color: white;
+    background-color: orange;
+}
+
 
