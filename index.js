@@ -11,7 +11,9 @@ let valEntered = false;
 numberButton.forEach(num => {
     num.addEventListener("click", (e) => {
         let str = screenDisplay.textContent
-        display = screenDisplay.textContent = str.replace(/^0+/, "");
+        if (Number(str)===0&& str.indexOf('.') <= -1) {
+            display = screenDisplay.textContent = str.replace(/^0+/, "");    
+        }
         if (valEntered) {
             display = screenDisplay.textContent = e.target.value;
         } else {
