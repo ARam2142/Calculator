@@ -1,32 +1,51 @@
-//BREAK IT UP INTO SMALL CHUNCKS
+const numberButton = document.querySelectorAll('.number'); //console.log(numbers)
+const operatorButton = document.querySelectorAll('.operator');
+const toolButton = document.querySelectorAll('.others');
+const decimalButton = document.querySelector('.decimal');
+const screenDisplay = document.querySelector('.screen_display')
 
-const screenDisplay = document.querySelector('.screen_display');
-const buttons = document.querySelectorAll('[id]')
-//const number = document.querySelectorAll('.number');
-//const toolButton = document.querySelectorAll('.calcbutton')
+let display, number, zero,
+    equal = false;
+let valEntered = false;
 
-let isBtnClicked =false;
-let numberEntered = '';
-let firstValue = "0";
+numberButton.forEach(num => {
+    num.addEventListener("click", (e) => {
+        let str = screenDisplay.textContent
+        display = screenDisplay.textContent = str.replace(/^0+/, "");
+        if (valEntered) {
+            display = screenDisplay.textContent = e.target.value;
+        } else {
+            display = screenDisplay.textContent += e.target.value;
+        }
 
-//buttons do work
-buttons.forEach(btn => {
-    btn.addEventListener('click', function() {
-        inputNumber(this.id)
-    });    
+        if (display.length > 16) {
+            alert("Thats as far as it goes");
+        }
+    })
 });
 
-function inputNumber(number) {
-    if (firstValue === "0") {
-        const numDisplay = screenDisplay.innerHTML;
-        screenDisplay.innerHTML = parseInt(numDisplay + number).toString()
+decimalButton.addEventListener('click', (e) => {
+    let decimal = e.target.value;
+    zero = '0.'
+    if (zero) {
+        display = screenDisplay.textContent += decimal;
     }
-    // let secondValue = ''
-    // if (secondValue !== "0") {
-    //     let displayNum = screenDisplay.innerHTML 
-    //     displayNum= screenDisplay.innerHTML +number
-    // }
 
-}
+});
+
+operatorButton.forEach(op => {
+    op.addEventListener('click', () => {
+        let butOp = op.textContent; console.log(butOp);
+
+    })
+})
+
+
+
+
+
+
+
+
 
 
