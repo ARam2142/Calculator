@@ -1,40 +1,48 @@
 body {
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-size: large;
-    font-style: normal;
-    background-color: cadetblue;
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(#55c4e2, #00ff6c);
 }
 
-h1 {
-    text-align: center;
+.container {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(80px, auto) repeat(5, 100px);
 }
 
-.container.calculator {
-    justify-content: center;
-    width: max-content;
-    display: flex;
-    flex-wrap: wrap;
+.container > button {
+  font-size: 2rem;
 }
 
-.screen_display {
-    width: 100%;
-    background-color: grey;
-    height: 50px;
-    font-size: 40px;
-    text-align: right;
-    justify-content: flex-end;
-    border-color: black;
-    border-width: 1px;
-    border-style: solid;
-    background-color: grey;
+.reset {
+  grid-column: span 2;
 }
 
-button.calcbutton {
-    justify-content: center;
-    flex: 1 25%;
-    font-size: 33px;
-    color: white;
-    background-color: orange;
+#equals {
+  grid-column: span 2;
 }
 
+#zero {
+  grid-column: span 2;
+}
 
+.screen-display {
+  grid-column: 1 / -1;
+  font-size: 35px;
+}
+
+.calcbutton {
+  background-color: rgba(65, 78, 82, 0.856);
+  color: white;
+  cursor: pointer;
+  outline: none;
+  border-style: double;
+  border-color: rgb(0, 0, 0);
+}
+
+.calcbutton:hover {
+  background-color: rgb(100, 183, 211);
+}
