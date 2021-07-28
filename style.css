@@ -32,6 +32,9 @@ body {
 .screen-display {
   grid-column: 1 / -1;
   font-size: 35px;
+  border-style: double;
+  border-color: rgb(77, 77, 77);
+  text-align: right;
 }
 
 .calcbutton {
@@ -40,7 +43,7 @@ body {
   cursor: pointer;
   outline: none;
   border-style: double;
-  border-color: rgb(0, 0, 0);
+  border-color: rgb(68, 68, 68);
 }
 
 .calcbutton:hover {
