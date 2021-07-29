@@ -1,63 +1,28 @@
-const numberButton = document.querySelectorAll('.number'); //console.log(numbers)
-const operatorButton = document.querySelectorAll('.operator');
-const toolButton = document.querySelectorAll('.others');
-const decimalButton = document.querySelector('.decimal');
-const clearBtn = document.querySelector('.reset')
-const screenDisplay = document.querySelector('.screen_display')
+const screenInput = document.querySelector(".screen-display");
+const buttons = document.querySelectorAll(".calcbutton");
+console.log(buttons);
 
-let display, number, zero,
-operator, equal = false;
-let valEntered = false;
-
-numberButton.forEach(num => {
-    num.addEventListener("click", (e) => {
-        let str = screenDisplay.textContent;
-        if (!str.includes(".")) {
-            display = screenDisplay.textContent = str.replace(/^0+/, "");
-        }
-        if (valEntered) {
-            display = screenDisplay.textContent = e.target.value;
-        } else {
-            display = screenDisplay.textContent += e.target.value;
-        }
-        
-    })
-});
-
-decimalButton.addEventListener('click', (e) => {
-    let decimal = e.target.value;
-    let screenStr = screenDisplay.textContent;
-    decimalButton.disabled = true
-    if (screenStr.indexOf('.') > -1) {
-        display = screenDisplay.textContent = screenStr.search(/^\d+(\.\d+)?$/); 
+buttons.forEach(function (button) {
+  button.addEventListener("click", (e) => {
+    let target = e.target.id;
+    let theNumber = screenInput.value;
+    if (!theNumber.includes(".")) {
+      screenInput.value = theNumber.replace(/^0+/, "");
     }
-    if (decimal) {
-        display = screenDisplay.textContent += decimal
+    if (button.classList.contains("number")) {
+      screenInput.value += target;
     }
-    
-    
+    if (button.classList.contains("operator")) {
+      screenInput.value += target;
+    }
+    if (button.classList.contains("decimal")) {
+      screenInput.value += target;
+    }
+    if (button.classList.contains("equal")) {
+      screenInput.value = eval(screenInput.value);
+    }
+    if (button.classList.contains("reset")) {
+      screenInput.value = "0";
+    }
+  });
 });
-
-
-operatorButton.forEach(op => {
-    op.addEventListener('click', () => {
-        let strOnScreen = /^(\d+(\.\d+)?)$/;
-
-        let butOp = op.textContent; console.log(butOp);
-        
-    })
-})
-
-clearBtn.addEventListener('click', (e)=> {
-    display = screenDisplay.textContent = "0";
-    decimalButton.disabled = false;
-})
-
-
-
-
-
-
-
-
-

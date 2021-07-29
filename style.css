@@ -21,11 +21,11 @@ body {
   grid-column: span 2;
 }
 
-#equals {
+.equal {
   grid-column: span 2;
 }
 
-#zero {
+.zero {
   grid-column: span 2;
 }
 
