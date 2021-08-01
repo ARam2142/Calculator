@@ -1,28 +1,59 @@
-const screenInput = document.querySelector(".screen-display");
-const buttons = document.querySelectorAll(".calcbutton");
-console.log(buttons);
+const display = document.querySelector(".screen-display");
+const operators = document.querySelectorAll(".operator");
+const numbers = document.querySelectorAll(".number");
+const decimal = document.querySelector(".decimal");
+console.log(decimal);
 
-buttons.forEach(function (button) {
-  button.addEventListener("click", (e) => {
-    let target = e.target.id;
-    let theNumber = screenInput.value;
-    if (!theNumber.includes(".")) {
-      screenInput.value = theNumber.replace(/^0+/, "");
-    }
-    if (button.classList.contains("number")) {
-      screenInput.value += target;
-    }
-    if (button.classList.contains("operator")) {
-      screenInput.value += target;
-    }
-    if (button.classList.contains("decimal")) {
-      screenInput.value += target;
-    }
-    if (button.classList.contains("equal")) {
-      screenInput.value = eval(screenInput.value);
-    }
-    if (button.classList.contains("reset")) {
-      screenInput.value = "0";
-    }
-  });
+let firstNum = "";
+let secondNum = "";
+let operator = "";
+
+//first number  and operator
+numbers.forEach(function (number) {
+  number.addEventListener("click", () => displayNumber(number.innerText));
+});
+
+function displayNumber(number) {
+  let numberKey = parseFloat(number);
+
+  if (display.value === "0") {
+    display.value = numberKey;
+  } else {
+    display.value += numberKey;
+  }
+  currEl = numberKey;
+  // firstOperation(currEl);
+  console.log(currEl);
+}
+
+operators.forEach((operator) => {
+  operator.addEventListener("click", () => inputOperators(operator.innerText));
+});
+
+function inputOperators(op) {
+  let symbols = op;
+  switch (symbols) {
+    case "+":
+      display.value += symbols;
+      break;
+    case "-":
+      display.value += symbols;
+      break;
+    case "x":
+      display.value += symbols;
+      break;
+    case "÷":
+      display.value += symbols;
+      break;
+    default:
+      break;
+  }
+}
+
+decimal.addEventListener("click", (e) => {
+  let theNumber = display.value;
+  let target = e.target.value;
+  if (!theNumber.includes(target)) {
+    display.value += target;
+  }
 });
